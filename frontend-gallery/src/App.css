@@ -1,0 +1,145 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --nav-height: 70px;
+  --primary: #2563eb;
+  --bg-color: #f8fafc;
+  --text-color: #1e293b;
+  --border-color: #e2e8f0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  box-sizing: border-box;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* --- Buttons --- */
+button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-upload {
+  background-color: #0f172a;
+  color: white;
+}
+.btn-upload:hover { background-color: #334155; }
+.btn-upload:disabled { opacity: 0.7; cursor: wait; }
+
+.btn-delete {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+.btn-delete:hover { background-color: #fecaca; }
+.btn-delete:disabled { opacity: 0.5; cursor: not-allowed; background-color: #f1f5f9; color: #cbd5e1; }
+
+/* --- Full Screen Grid --- */
+.main-content {
+  margin-top: var(--nav-height); /* Push content down */
+  padding: 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  /* Auto-fill responsive grid */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  gap: 15px;
+}
+
+.image-card {
+  position: relative;
+  aspect-ratio: 1; /* Makes every image a square */
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #e2e8f0;
+}
+
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Selected State */
+.image-card.selected {
+  box-shadow: 0 0 0 4px #2563eb; /* Blue ring */
+}
+
+.image-card.selected img {
+  opacity: 0.8;
+}
+
+.checkmark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #2563eb;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.loading-text {
+  text-align: center;
+  margin-top: 50px;
+  color: #64748b;
+  font-size: 1.2rem;
+}
